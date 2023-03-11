@@ -19,12 +19,9 @@ The goal for this peoject is implementing Model-View-Projection (MVP) matrix tra
 Model transformation is transforming a 3D object in the local space to world space. There also include rotation because we should setup camera up at Y axis and look at -Z axis. We should impelement model/view transformation in both camera and object, in the code I just use translate matrix to translate them into original position (get_view_matrix). 
 
 ## projection transformation
-There are two different projection : **perspective projection** & **othrographic projection**
-![](assets/othro%26pres%20projection.png)
+There are two different projection : **[perspective projection](https://www.geeksforgeeks.org/perspective-projection-and-its-types/)** & **[othrographic projection](https://en.wikipedia.org/wiki/Orthographic_projection)**
 ### othrographic projection
-This projection is scaling object into canonical cube:
-![](assets/othro%20projection.png)
-I do it frist move the center to original point, and then scale it in 1 $/times$ 1 $/times$ 1 cube, here is the matrix:
+This projection is scaling object into canonical cube, I do it frist move the center to original point, and then scale it in 1 $\times$ 1 $\times$ 1 cube, here is the matrix:
 
 $$
  M_{ortho} = 
