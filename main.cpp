@@ -6,7 +6,7 @@
 
 constexpr double MY_PI = 3.1415926;
 
-//translate camera position to original position
+//-----------------------------------translate camera position to original position -----------------------------------------------------
 Eigen::Matrix4f get_view_matrix(Eigen::Vector3f eye_pos)
 {
 	//initialize view
@@ -23,7 +23,7 @@ Eigen::Matrix4f get_view_matrix(Eigen::Vector3f eye_pos)
     return view;
 }
 
-//rotation based on z axis
+//---------------------------------------------rotation based on z axis ----------------------------------------------------------------
 Eigen::Matrix4f get_model_matrix(float rotation_angle)
 {
 	//initial model matrix
@@ -42,17 +42,16 @@ Eigen::Matrix4f get_model_matrix(float rotation_angle)
     return model;
 }
 
-//透视矩阵=正交矩阵*透视矩阵->正交矩阵
-
+//------------------------------------------persp->ortho matrix----------------------------------------------------
 Eigen::Matrix4f get_projection_matrix(float eye_fov, float aspect_ratio,
                                       float zNear, float zFar)
 {
-    // 初始化透视矩阵，正交矩阵，透视->正交矩阵
+    // initial matrix
     Eigen::Matrix4f projection = Eigen::Matrix4f::Identity();
 	Eigen::Matrix4f ortho = Eigen::Matrix4f::Identity();
 	Eigen::Matrix4f persp_ortho = Eigen::Matrix4f::Identity();
 
-	//度数转弧度
+	//change to radian
 	float halfEyeAngelRadian = eye_fov / 2 / 180.0 * MY_PI;
 
     float n = -1 * zNear;
@@ -62,19 +61,16 @@ Eigen::Matrix4f get_projection_matrix(float eye_fov, float aspect_ratio,
     float l = (-1) * r;//
     float b = (-1) * t;//
 
-	//正交矩阵
 	ortho << 2 / (r - l), 0, 0, 0,
         0, 2 / (t - b), 0, 0,
         0, 0, 2 / zNear - zFar, 0,
         0, 0, 0, 1;
 
-	//透视->正交矩阵
 	persp_ortho << n, 0, 0, 0,
         0, n, 0, 0,
         0, 0,n + f, -1 *  n * f,
         0, 0, 1, 0;
 
-	//计算
 	projection = ortho * persp_ortho;
 
     return projection;
