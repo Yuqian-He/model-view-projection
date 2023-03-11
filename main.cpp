@@ -76,7 +76,7 @@ Eigen::Matrix4f get_projection_matrix(float eye_fov, float aspect_ratio,
     return projection;
 }
 
-//旋转：得到绕任意轴 过原点的旋转
+//rotation based on any axis
 Eigen::Matrix4f get_rotation(Vector3f axis, float angle){
 
 

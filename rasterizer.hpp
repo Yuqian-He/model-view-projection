@@ -8,7 +8,6 @@
 #include <algorithm>
 #include <eigen3/Eigen/Eigen>
 using namespace Eigen;
-//此头文件用于创建rst命名空间，在这个命名空间里创建了所需的变量和类
 namespace rst {
 enum class Buffers
 {
@@ -16,27 +15,18 @@ enum class Buffers
     Depth = 2
 };
 
-//内联函数重载|运算
 inline Buffers operator|(Buffers a, Buffers b)
 {
     return Buffers((int)a | (int)b);
 }
 
-//内联函数重载&运算
 inline Buffers operator&(Buffers a, Buffers b)
 {
     return Buffers((int)a & (int)b);
 }
-/*
-关键字inline 必须与函数定义体放在一起才能使函数成为内联，仅将inline 放在函数声明前面不起任何作用。
-内联函数直接将函数调用展开为函数体代码
-函数调用是有代价的，会开辟栈空间，回收栈空间
-内联函数没有这些代价，提高效率
-*/
 
 enum class Primitive
 {
-    //告诉后面的draw函数需要绘制的图形，目前只实现了三角形和直线
     Line,
     Triangle
 };
@@ -47,13 +37,11 @@ enum class Primitive
  * compiler won't compile it. Aka : Type safety
  * */
 
-//做标记
 struct pos_buf_id
 {
     int pos_id = 0;
 };
 
-//做标记
 struct ind_buf_id
 {
     int ind_id = 0;
@@ -62,7 +50,6 @@ struct ind_buf_id
 class rasterizer
 {
   public:
-    //构造函数 初始化frame_buf(像素数组)和depth_buf(深度数组)为w*h大小
     rasterizer(int w, int h);
     pos_buf_id load_positions(const std::vector<Eigen::Vector3f>& positions);
     ind_buf_id load_indices(const std::vector<Eigen::Vector3i>& indices);
@@ -77,7 +64,6 @@ class rasterizer
 
     void draw(pos_buf_id pos_buffer, ind_buf_id ind_buffer, Primitive type);
 
-    //函数frame_buffer的作用是返回像素数组
     std::vector<Eigen::Vector3f>& frame_buffer() { return frame_buf; }
 
   private:

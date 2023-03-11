@@ -9,7 +9,6 @@
 #include <stdexcept>
 
 
-//函数load_position的作用是储存位置信息
 rst::pos_buf_id rst::rasterizer::load_positions(const std::vector<Eigen::Vector3f> &positions)
 {
     auto id = get_next_id();
@@ -18,7 +17,6 @@ rst::pos_buf_id rst::rasterizer::load_positions(const std::vector<Eigen::Vector3
     return {id};
 }
 
-//函数load_indices的作用是储存索引信息
 rst::ind_buf_id rst::rasterizer::load_indices(const std::vector<Eigen::Vector3i> &indices)
 {
     auto id = get_next_id();
@@ -29,7 +27,6 @@ rst::ind_buf_id rst::rasterizer::load_indices(const std::vector<Eigen::Vector3i>
 
 // Bresenham's line drawing algorithm
 // Code taken from a stack overflow answer: https://stackoverflow.com/a/16405254
-//函数draw_line的作用是通过Bresenham算法来计算出需要绘制的像素点
 void rst::rasterizer::draw_line(Eigen::Vector3f begin, Eigen::Vector3f end)
 {
     auto x1 = begin.x();
@@ -135,7 +132,6 @@ auto to_vec4(const Eigen::Vector3f& v3, float w = 1.0f)
     return Vector4f(v3.x(), v3.y(), v3.z(), w);
 }
 
-////函数draw的作用是把所有的点通过mvp变换和视口变换，转换成可以在我们的w*h大小的屏幕上显示的点，并通过setVertex函数保存到Triangle里的v[]中
 void rst::rasterizer::draw(rst::pos_buf_id pos_buffer, rst::ind_buf_id ind_buffer, rst::Primitive type)
 {
     if (type != rst::Primitive::Triangle)
@@ -185,7 +181,6 @@ void rst::rasterizer::draw(rst::pos_buf_id pos_buffer, rst::ind_buf_id ind_buffe
     }
 }
 
-//函数raster_wireframe的作用是分别调用三次draw_line来计算三条线
 void rst::rasterizer::rasterize_wireframe(const Triangle& t)
 {
     draw_line(t.c(), t.a());
@@ -193,25 +188,21 @@ void rst::rasterizer::rasterize_wireframe(const Triangle& t)
     draw_line(t.b(), t.a());
 }
 
-//函数set_model的作用是获取模型变换矩阵
 void rst::rasterizer::set_model(const Eigen::Matrix4f& m)
 {
     model = m;
 }
 
-//函数set_view的作用是获取视图变换矩阵
 void rst::rasterizer::set_view(const Eigen::Matrix4f& v)
 {
     view = v;
 }
 
-//函数set_projection的作用是获取透视投影变换矩阵
 void rst::rasterizer::set_projection(const Eigen::Matrix4f& p)
 {
     projection = p;
 }
 
-//函数clear的作用是清除整个显示屏幕，实现方法是把两个缓存数组都置为0
 void rst::rasterizer::clear(rst::Buffers buff)
 {
     if ((buff & rst::Buffers::Color) == rst::Buffers::Color)
@@ -235,7 +226,6 @@ int rst::rasterizer::get_index(int x, int y)
     return (height-y)*width + x;
 }
 
-//函数set_pixel的作用是把每个需要绘制的点的像素信息保存到像素数组frame_buff里
 void rst::rasterizer::set_pixel(const Eigen::Vector3f& point, const Eigen::Vector3f& color)
 {
     //old index: auto ind = point.y() + point.x() * width;
