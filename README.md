@@ -1,6 +1,19 @@
 # Overview
 The goal for this peoject is implementing Model-View-Projection (MVP) matrix transformation technique to convert a 3D triangle with a user-defined position into its corresponding screen position, thereby enabling its display on the screen. 
 
+# development environment
+
+- build system generator: [CMake](https://cmake.org/)
+- build system: [Ninja](https://ninja-build.org/)
+- compiler: [GCC 12.2.0 aarch64-apple-darwin22](https://linux.die.net/man/1/gcc)
+- Integrated Development Environment (IDE): [Visual Studio Code](https://code.visualstudio.com/) 
+- C++ libraries:
+  - C++ Standard Library
+  - [Eigen3](https://eigen.tuxfamily.org/index.php?title=Main_Page)
+  - [openCV2](https://opencv.org/)
+- package manager: [vcpkg](https://github.com/Microsoft/vcpkg)
+- version control system (VCS): [Git](https://git-scm.com/)
+
 # Method 
 ## model/view transformation
 Model transformation is transforming a 3D object in the local space to world space. There also include rotation because we should setup camera up at Y axis and look at -Z axis. We should impelement model/view transformation in both camera and object, in the code I just use translate matrix to translate them into original position (get_view_matrix). 
@@ -53,4 +66,9 @@ $$
   0&0&0&1\\
   \end{bmatrix} 
 $$
+
+### rotate in any axis
+![](assets/rotate%20in%20any%20axis.png)
+
+# Result
 
