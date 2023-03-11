@@ -6,7 +6,7 @@
 
 constexpr double MY_PI = 3.1415926;
 
-//-----------------------------------translate camera position to original position -----------------------------------------------------
+//-----------------------------------Tview matrix (just translate object to original position) -----------------------------------------------------
 Eigen::Matrix4f get_view_matrix(Eigen::Vector3f eye_pos)
 {
 	//initialize view
