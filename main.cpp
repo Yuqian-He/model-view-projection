@@ -6,7 +6,7 @@
 
 constexpr double MY_PI = 3.1415926;
 
-//-----------------------------------Tview matrix (just translate object to original position) -----------------------------------------------------
+//-----------------------------------T_view matrix (just translate object to original position) -----------------------------------------------------
 Eigen::Matrix4f get_view_matrix(Eigen::Vector3f eye_pos)
 {
 	//initialize view
@@ -42,7 +42,7 @@ Eigen::Matrix4f get_model_matrix(float rotation_angle)
     return model;
 }
 
-//------------------------------------------persp->ortho matrix----------------------------------------------------
+//------------------------------------------persp matrix---------------------------------------------------------
 Eigen::Matrix4f get_projection_matrix(float eye_fov, float aspect_ratio,
                                       float zNear, float zFar)
 {
@@ -76,7 +76,7 @@ Eigen::Matrix4f get_projection_matrix(float eye_fov, float aspect_ratio,
     return projection;
 }
 
-//rotation based on any axis
+//----------------------------------------rotation based on any axis------------------------------------------------
 Eigen::Matrix4f get_rotation(Vector3f axis, float angle){
 
 
