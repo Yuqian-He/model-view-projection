@@ -88,5 +88,24 @@ R(n,\alpha) =
 $$
 
 # Result
-show a triangle on the screen
+Show a triangle on the screen
 ![](assets/triangle.png)
+Press A & D to rotate this triangle
+
+# Building
+'''
+# Setup environment 
+
+# Download repository
+$ git clone git@github.com:Yuqian-He/model-view-projection.git
+$ cd model-view-projection
+
+# Configure and build project
+$ mkdir build
+$ cd build
+$ cmake .. 
+$ make
+
+# Run the program
+$ ./Rasterizer
+'''
