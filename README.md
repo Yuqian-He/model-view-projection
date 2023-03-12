@@ -88,4 +88,5 @@ R(n,\alpha) =
 $$
 
 # Result
-
+show a triangle on the screen
+![](assets/triangle.png)
