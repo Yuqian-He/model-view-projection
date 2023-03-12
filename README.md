@@ -93,7 +93,7 @@ Show a triangle on the screen
 Press A & D to rotate this triangle
 
 # Building
-'''
+```
 # Setup environment 
 
 # Download repository
@@ -108,4 +108,4 @@ $ make
 
 # Run the program
 $ ./Rasterizer
-'''
+```
