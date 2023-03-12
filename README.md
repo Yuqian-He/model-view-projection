@@ -75,16 +75,15 @@ $$
 
 ### rotate in any axis
 [Rodrigues’ Rotation Formula](https://en.wikipedia.org/wiki/Rodrigues%27_rotation_formula)
-Rotation by angle $\alpha$ around axis $\n$
+Rotation by angle $\alpha$ around axis $n$
 
 $$
-R(\n,\alpha) =
+R(n,\alpha) =
  cos(\alpha)I + (1-cos(\alpha))\times n \times n^{T} + sin(\alpha) \times 
  \begin{bmatrix}
-   n&0&0&0\\
-   0&n&0&0\\
-   0&0&n+f&-nf\\
-   0&0&1&0\\
+   0&-n_{z}&n_{y}\\
+   n_{z}&0&-n_{x}\\
+   -n_{y}&n_{x}&0\\
 \end{bmatrix}
 $$
 
