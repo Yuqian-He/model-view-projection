@@ -72,8 +72,20 @@ $$
   0&0&0&1\\
   \end{bmatrix} 
 $$
+## Canonical cube to screen
+transform in xy plane: $[-1,1]^{2}$ to $[0,width]\times[0,height]$
 
-### rotate in any axis
+$$
+M_{Viewport} = 
+   \begin{bmatrix}
+   \frac{width}{2}&0&0&\frac{width}{2}\\
+   0&\frac{height}{2}&0&\frac{height}{2}\\
+   0&0&1&0\\
+   0&0&0&1\\
+   \end{bmatrix}
+$$
+
+## rotate in any axis
 [Rodrigues’ Rotation Formula](https://en.wikipedia.org/wiki/Rodrigues%27_rotation_formula)
 Rotation by angle $\alpha$ around axis $n$
 
