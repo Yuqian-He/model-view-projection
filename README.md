@@ -103,7 +103,6 @@ $$
 Show a triangle on the screen
 ![](assets/triangle.png)
 Press A & D to rotate this triangle
-![](assets/0313_1.jpg)
 
 # Building
 ```
